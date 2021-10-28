@@ -22,7 +22,7 @@ const App: NextPage = () => {
             <div className="max-w-sm w-full mt-1">
                 <SearchInput />
             </div>
-            <div className="w-full h-auto flex justify-center items-center flex-wrap p-10">
+            <div className="w-full h-auto flex justify-center items-center flex-wrap px-4">
                 {data &&
                     data.results &&
                     data.results.map((val, i) => (
