@@ -1,20 +1,19 @@
 import type { NextPage } from "next";
-import useSWR from "swr";
 
 import { JikanQuery } from "../types";
 import { useStore } from "../store";
 import { AnimeCard, SearchInput } from "../components";
 import { useDebounce } from "use-debounce";
-
-const fetcher = (url: string) => fetch(url).then(res => res.json());
+import { useRedaxios } from "use-redaxios";
 
 const App: NextPage = () => {
     const query = useStore(store => store.state.query);
     const [debouncedQuery] = useDebounce(query, 1000);
 
-    const { data } = useSWR<JikanQuery>(
-        "https://api.jikan.moe/v3/search/anime?q=" + encodeURIComponent(debouncedQuery),
-        fetcher
+    const { data } = useRedaxios<JikanQuery>(
+        "https://api.jikan.moe/v3/search/anime?q=" + debouncedQuery,
+        {},
+        [debouncedQuery]
     );
 
     return (
@@ -24,7 +23,6 @@ const App: NextPage = () => {
             </div>
             <div className="w-full h-auto flex justify-center items-center flex-wrap px-4">
                 {data &&
-                    data.results &&
                     data.results.map((val, i) => (
                         <div key={i} className="p-4">
                             <AnimeCard
