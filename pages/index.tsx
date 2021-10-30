@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 
 import { JikanQuery } from "../types";
 import { useStore } from "../store";
-import { AnimeCard, SearchInput } from "../components";
+import { AnimeCard, SearchInput, NavBar } from "../components";
 import { useDebounce } from "use-debounce";
 import { useRedaxios } from "use-redaxios";
 
@@ -11,13 +11,15 @@ const App: NextPage = () => {
     const [debouncedQuery] = useDebounce(query, 1000);
 
     const { data } = useRedaxios<JikanQuery>(
-        "https://api.jikan.moe/v3/search/anime?q=" + debouncedQuery,
+        "https://api.jikan.moe/v3/search/anime?q=" + encodeURIComponent(debouncedQuery),
         {},
-        [debouncedQuery]
+        // don't call the request if it's empty
+        debouncedQuery ? [debouncedQuery] : undefined
     );
 
     return (
-        <div className="w-screen h-screen flex flex-col items-center">
+        <div className="w-screen h-screen flex flex-col items-center bg-nord-600 overflow-auto overflow-x-hidden">
+            <NavBar />
             <div className="max-w-sm w-full mt-1">
                 <SearchInput />
             </div>
@@ -32,6 +34,7 @@ const App: NextPage = () => {
                                 name={val.title}
                                 rated={String(val.rated)}
                                 score={val.score}
+                                link={val.url}
                             />
                         </div>
                     ))}

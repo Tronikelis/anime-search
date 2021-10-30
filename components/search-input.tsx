@@ -6,10 +6,10 @@ export default function SearchInput() {
 
     return (
         <div className="w-full h-full p-4">
-            <div className="font-semibold text-purple-600">Search:</div>
+            <div className="font-semibold text-frost-200">Search:</div>
             <input
                 type="text"
-                className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                className="bg-nord-100 appearance-none border-2 rounded w-full py-2 px-4 text-nord-300 leading-tight focus:outline-none focus:border-frost-200"
                 onChange={e => setQuery(e.target.value)}
                 value={query}
             />
