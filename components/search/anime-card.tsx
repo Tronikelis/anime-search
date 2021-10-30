@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Star } from "react-iconly";
 import { memo } from "react";
 
@@ -16,12 +15,11 @@ interface AnimeCardProps {
 function AnimeCard(props: AnimeCardProps) {
     const { desc, episodes, name, rated, score, imgUrl, link } = props;
     return (
-        <motion.a
-            className="w-80 md:w-96 lg:w-[580px] h-auto flex p-6 rounded-xl flex-col md:flex-row justify-around items-center bg-nord-400 shadow-xl"
-            whileHover={{ scale: 1.05, cursor: "pointer" }}
-            whileTap={{ scale: 0.95 }}
+        <a
+            className="w-80 md:w-96 lg:w-[580px] h-auto flex p-6 rounded-xl flex-col md:flex-row justify-around items-center bg-nord-400 shadow-xl hover:scale-105 transition-all"
             href={link}
             target="_blank"
+            rel="noreferrer"
         >
             <div className="w-full h-auto pr-2">
                 <Image
@@ -53,7 +51,7 @@ function AnimeCard(props: AnimeCardProps) {
                     </div>
                 </div>
             </div>
-        </motion.a>
+        </a>
     );
 }
 

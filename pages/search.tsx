@@ -6,11 +6,13 @@ import { AnimeCard, SearchInput } from "../components";
 import { useDebounce } from "use-debounce";
 import { useRedaxios } from "use-redaxios";
 
+import Spinner from "react-spinners/ScaleLoader";
+
 const Search: NextPage = () => {
     const query = useStore(store => store.state.query);
-    const [debouncedQuery] = useDebounce(query, 1000);
+    const [debouncedQuery] = useDebounce(query, 100);
 
-    const { data } = useRedaxios<JikanQuery>(
+    const { data, loading } = useRedaxios<JikanQuery>(
         "https://api.jikan.moe/v3/search/anime?q=" + encodeURIComponent(debouncedQuery),
         {},
         // don't call the request if it's empty
@@ -37,6 +39,8 @@ const Search: NextPage = () => {
                             />
                         </div>
                     ))}
+                    
+                {loading && <Spinner color="#81a1c1" />}
             </div>
         </>
     );

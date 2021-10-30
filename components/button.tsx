@@ -1,13 +1,21 @@
-import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 
-export default function Button({ children }: any) {
+interface ButtonProps {
+    onClick?: () => void;
+    icon?: ReactNode;
+    children: any;
+}
+
+export default function Button(props: ButtonProps) {
+    const { children, icon, onClick } = props;
     return (
-        <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="bg-nord-300 hover:bg-nord-400 rounded-md font-semibold text-white"
+        <button
+            onClick={onClick}
+            className="bg-nord-300 hover:bg-nord-400 rounded-lg font-semibold text-white p-2"
         >
-            <div className="p-2 flex justify-evenly items-center w-full">{children}</div>
-        </motion.button>
+            <div className="flex w-full h-full justify-evenly items-center">
+                {icon}<div className="w-1"/>{children}
+            </div>
+        </button>
     );
 }
