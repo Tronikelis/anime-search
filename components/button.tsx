@@ -1,16 +1,13 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
+import { motion } from "framer-motion";
 
-type ButtonProps = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
-
-export default function Button({ children, ...props }: ButtonProps) {
+export default function Button({ children }: any) {
     return (
-        <button
-            {...props}
+        <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             className="bg-nord-300 hover:bg-nord-400 rounded-md font-semibold text-white"
         >
-            <div className="p-2 flex justify-evenly items-center w-full">
-                {children}
-            </div>
-        </button>
+            <div className="p-2 flex justify-evenly items-center w-full">{children}</div>
+        </motion.button>
     );
 }
