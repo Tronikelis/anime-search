@@ -18,7 +18,7 @@ function AnimeCard(props: AnimeCardProps) {
 
     return (
         <Link href={"/anime/" + id} passHref>
-            <div className="w-80 md:w-96 lg:w-[580px] h-auto flex p-6 rounded-xl flex-col md:flex-row justify-around items-center bg-nord-400 shadow-xl hover:scale-105 transition-all hover:cursor-pointer">
+            <a className="w-80 md:w-96 lg:w-[580px] h-auto flex p-6 rounded-xl flex-col md:flex-row justify-around items-center bg-nord-400 shadow-xl hover:scale-105 transition-all hover:cursor-pointer">
                 <div className="w-full h-auto pr-2">
                     <Image
                         className="rounded-md"
@@ -49,7 +49,7 @@ function AnimeCard(props: AnimeCardProps) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </Link>
     );
 }

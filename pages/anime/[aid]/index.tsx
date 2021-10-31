@@ -36,16 +36,20 @@ export default function Anime() {
                             )}
 
                             <div className="text-frost-200 text-lg mt-2">
-                                Genres: {data?.genres.map(x => x.name).join(", ")}
+                                <span className="font-semibold">Genres: </span>
+                                {data?.genres.map(x => x.name).join(", ")}
                             </div>
                             <div className="text-frost-200 text-lg mt-2">
-                                Broadcast: {data?.broadcast}
+                                <span className="font-semibold">Broadcast: </span>
+                                {data?.broadcast}
                             </div>
                             <div className="text-frost-200 text-lg mt-2">
-                                Premiered: {data?.premiered}
+                                <span className="font-bold">Premiered: </span>
+                                {data?.premiered}
                             </div>
                             <div className="text-frost-200 text-lg mt-2">
-                                Status: {data?.status}
+                                <span className="font-bold">Status: </span>
+                                {data?.status}
                             </div>
                         </div>
                     </Card>

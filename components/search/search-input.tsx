@@ -6,7 +6,7 @@ export default function SearchInput() {
 
     return (
         <div className="w-full h-full p-4 flex flex-col justify-center items-center">
-            <div className="font-bold text-frost-200">Search:</div>
+            <div className="font-bold text-frost-200 text-xl mb-1">Search:</div>
             <input
                 type="text"
                 className="bg-nord-100 appearance-none border-2 rounded w-full py-2 px-4 text-nord-300 leading-tight focus:outline-none focus:border-frost-200 font-semibold"

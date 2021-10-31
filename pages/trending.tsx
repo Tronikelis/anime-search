@@ -18,7 +18,7 @@ export default function Trending() {
             <div className="w-full h-full flex justify-center items-center flex-wrap">
                 {data?.top.map((val, i) => (
                     <Link href={`/anime/${val.mal_id}`} passHref key={i}>
-                        <div className="w-64 md:w-80 h-auto m-4 hover:cursor-pointer">
+                        <a className="w-64 md:w-80 h-auto m-4 hover:cursor-pointer">
                             <Card>
                                 <div className="w-full h-full flex flex-col p-5">
                                     <Image
@@ -35,7 +35,7 @@ export default function Trending() {
                                     </div>
                                 </div>
                             </Card>
-                        </div>
+                        </a>
                     </Link>
                 ))}
             </div>
