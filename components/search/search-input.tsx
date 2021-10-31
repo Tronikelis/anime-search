@@ -5,7 +5,7 @@ export default function SearchInput() {
     const query = useStore(store => store.state.query);
 
     return (
-        <div className="w-full h-full p-4">
+        <div className="w-full h-full p-4 flex flex-col justify-center items-center">
             <div className="font-bold text-frost-200">Search:</div>
             <input
                 type="text"

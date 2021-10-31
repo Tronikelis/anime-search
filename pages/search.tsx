@@ -19,8 +19,10 @@ export default function Search() {
 
     return (
         <>
-            <div className="max-w-sm w-full mt-1">
-                <SearchInput />
+            <div className="w-full mt-1 flex justify-center items-center">
+                <div className="w-1/4 min-w-max">
+                    <SearchInput />
+                </div>
             </div>
             <div className="w-full h-auto flex justify-center items-center flex-wrap px-4">
                 {data &&

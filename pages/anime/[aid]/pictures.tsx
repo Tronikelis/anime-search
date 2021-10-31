@@ -17,15 +17,15 @@ export default function Pictures() {
                 data.pictures.map((val, i) => (
                     <div
                         key={i}
-                        className="w-96 h-auto m-10 transition-all hover:scale-110"
+                        className="w-64 md:w-96 h-auto m-10 transition-all hover:scale-110"
                     >
                         <Image
                             src={val.large}
-                            className="rounded-md"
+                            className="rounded-3xl"
                             width="100%"
                             height="100%"
                             layout="responsive"
-                            objectFit="contain"
+                            objectFit="cover"
                         />
                     </div>
                 ))}
