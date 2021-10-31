@@ -8,7 +8,7 @@ import Spinner from "react-spinners/ScaleLoader";
 
 export default function Search() {
     const query = useStore(store => store.state.query);
-    const [debouncedQuery] = useDebounce(query, 100);
+    const [debouncedQuery] = useDebounce(query, 300);
 
     const { data, fetching } = useRedaxios<JikanQuery>(
         "https://api.jikan.moe/v3/search/anime?q=" + encodeURIComponent(debouncedQuery),
@@ -20,7 +20,7 @@ export default function Search() {
     return (
         <>
             <div className="w-full mt-1 flex justify-center items-center">
-                <div className="w-1/4 min-w-max">
+                <div className="w-72 md:w-96">
                     <SearchInput />
                 </div>
             </div>

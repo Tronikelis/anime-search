@@ -7,6 +7,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: [
+                    '"Source Code Pro"',
                     '"Inter"',
                     "system-ui",
                     "-apple-system",

@@ -1,28 +1,12 @@
 import { useRouter } from "next/router";
 import type { ReactNode } from "react";
-import { Chart, Document, Image2 } from "react-iconly";
+import { Document, Image2 } from "react-iconly";
 import Link from "next/link";
 import { useRedaxios } from "use-redaxios";
 import { JikanAnime } from "../../../types";
+import Image from "next/image";
 
-interface CardProps {
-    children: ReactNode;
-    icon?: ReactNode;
-}
-
-const Card = ({ children, icon }: CardProps) => {
-    return (
-        <div className="flex w-full h-full bg-nord-300 rounded-2xl justify-center items-center transition-all hover:scale-105 hover:cursor-pointer m-4">
-            {icon && (
-                <>
-                    {icon}
-                    <div className="w-2" />
-                </>
-            )}
-            {children}
-        </div>
-    );
-};
+import { Card } from "../../../components";
 
 export default function Anime() {
     const router = useRouter();
@@ -33,30 +17,49 @@ export default function Anime() {
     ]);
 
     return (
-        <div className="w-full h-full flex flex-col">
-            <span className="w-full h-auto text-frost-300 text-6xl text-center mt-2">
+        <div className="w-full h-full flex flex-col justify-center items-center">
+            <span className="w-full h-auto text-frost-300 text-6xl text-center my-8">
                 {data?.title_english || data?.title || data?.title_japanese}
             </span>
-            <div className="flex w-full h-full justify-around items-center flex-wrap">
-                <div className="flex-1">
+            <div className="flex w-full h-full justify-center items-center flex-wrap">
+                <div className="w-96 h-auto">
                     <Card>
-                        <div>
-                            <div>Stats</div>
-                            <div>
-                                {JSON.stringify(data, null, 2)}
+                        <div className="w-full h-full flex flex-col p-5">
+                            {data?.image_url && (
+                                <Image
+                                    className="rounded-xl"
+                                    src={data?.image_url ?? ""}
+                                    width="100%"
+                                    height="100%"
+                                    layout="responsive"
+                                    objectFit="cover"
+                                />
+                            )}
+
+                            <div className="text-frost-200 text-lg mt-2">
+                                Genres: {data?.genres.map(x => x.name).join(", ")}
+                            </div>
+                            <div className="text-frost-200 text-lg mt-2">
+                                Broadcast: {data?.broadcast}
+                            </div>
+                            <div className="text-frost-200 text-lg mt-2">
+                                Premiered: {data?.premiered}
+                            </div>
+                            <div className="text-frost-200 text-lg mt-2">
+                                Status: {data?.status}
                             </div>
                         </div>
                     </Card>
                 </div>
 
-                <div className="flex flex-1 justify-center items-start p-4 flex-wrap">
+                <div className="flex justify-center items-start p-4 flex-wrap">
                     <Link href={aid + "/episodes"} passHref>
-                        <a className="w-60 h-60 m-2 text-2xl font-semibold">
+                        <a className="w-60 h-60 m-2 text-2xl font-semibold text-frost-300">
                             <Card icon={<Document size={46} />}>Episodes</Card>
                         </a>
                     </Link>
                     <Link href={aid + "/pictures"} passHref>
-                        <a className="w-60 h-60 m-2 text-2xl font-semibold">
+                        <a className="w-60 h-60 m-2 text-2xl font-semibold text-frost-300">
                             <Card icon={<Image2 size={46} />}>Pictures</Card>
                         </a>
                     </Link>

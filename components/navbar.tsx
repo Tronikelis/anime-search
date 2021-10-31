@@ -1,11 +1,15 @@
 import Link from "next/link";
-import { Chart, Search } from "react-iconly";
+import { Heart2, Search } from "react-iconly";
 import Button from "./button";
 
 export default function NavBar() {
     return (
         <div className="w-screen h-auto bg-nord-500 flex justify-around items-center py-2">
-            <Button icon={<Chart />}>Top</Button>
+            <Link href="/trending">
+                <a>
+                    <Button icon={<Heart2 />}>Trending</Button>
+                </a>
+            </Link>
 
             <Link href="/search">
                 <a>
