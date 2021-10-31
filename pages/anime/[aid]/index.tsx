@@ -20,7 +20,7 @@ export default function Anime() {
             <span className="w-full h-auto text-frost-300 text-6xl text-center my-8">
                 {data?.title_english || data?.title || data?.title_japanese}
             </span>
-            <div className="flex w-full h-full justify-center items-center flex-wrap">
+            <div className="flex w-full h-full justify-center items-start flex-wrap">
                 <div className="w-96 h-auto">
                     <Card>
                         <div className="w-full h-full flex flex-col p-5">

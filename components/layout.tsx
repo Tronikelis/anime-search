@@ -5,7 +5,7 @@ export default function Layout({ children }: any) {
         <>
             <div className="w-screen h-screen flex flex-col z-0 items-center bg-nord-600 overflow-auto overflow-x-hidden">
                 <NavBar />
-                <div>{children}</div>
+                <div className="w-full h-full">{children}</div>
             </div>
         </>
     );

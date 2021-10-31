@@ -12,17 +12,17 @@ export default function Episodes() {
 
     return (
         <div className="flex w-full h-full flex-nowrap flex-col justify-center items-center">
-            <div className="w-full h-auto font-semibold text-frost-300 mt-10">Episodes:</div>
+            <div className="text-frost-300 font-bold text-4xl mb-6">Episodes:</div>
             <div className="flex flex-wrap justify-center items-center">
                 {data &&
                     data.episodes.map((val, i) => (
                         <div key={i} className="w-96 h-auto">
                             <div className="text-frost-200 text-left p-5 rounded-lg bg-nord-300 m-5 transition-all hover:scale-110">
-                                <div className="w-full text-lg">Episode {i + 1}</div>
-                                <div className="w-full text-sm">
+                                <div className="w-full text-xl">Episode {i + 1}</div>
+                                <div className="w-full text-lg">
                                     {val.title || val.title_japanese}
                                 </div>
-                                <div className="w-full text-right text-black text-xs">
+                                <div className="w-full text-right text-black text-sm">
                                     {val.aired?.split("T")[0]}
                                 </div>
                             </div>
