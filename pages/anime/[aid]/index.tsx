@@ -20,10 +20,10 @@ export default function Anime() {
             <div className="w-full h-auto text-frost-300 text-4xl md:text-6xl text-center my-8">
                 {data?.title_english || data?.title || data?.title_japanese}
             </div>
-            <div className="flex w-full h-full justify-center items-start flex-wrap">
+            <div className="flex w-full h-full justify-center items-center flex-wrap">
                 <div className="w-72 md:w-96 h-auto">
                     <Card>
-                        <div className="w-full h-full flex flex-col p-5">
+                        <div className="w-full h-full flex flex-col">
                             {data?.image_url && (
                                 <Image
                                     className="rounded-xl"
@@ -55,7 +55,7 @@ export default function Anime() {
                     </Card>
                 </div>
 
-                <div className="flex justify-center items-start p-4 flex-wrap">
+                <div className="flex justify-center items-center p-4 flex-wrap">
                     <Link href={aid + "/episodes"} passHref>
                         <a className="w-60 h-60 m-2 text-2xl font-semibold text-frost-300">
                             <Card icon={<Document size={46} />}>Episodes</Card>

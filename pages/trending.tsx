@@ -20,7 +20,7 @@ export default function Trending() {
                     <Link href={`/anime/${val.mal_id}`} passHref key={i}>
                         <a className="w-64 md:w-80 h-auto m-4 hover:cursor-pointer">
                             <Card>
-                                <div className="w-full h-full flex flex-col p-5">
+                                <div className="w-full h-full flex flex-col">
                                     <Image
                                         src={val.image_url}
                                         className="rounded-2xl"
