@@ -12,9 +12,13 @@ interface CardProps {
 
 const Card = ({ children, icon }: CardProps) => {
     return (
-        <div className="flex w-72 md:w-96 h-60 bg-nord-300 rounded-2xl font-bold text-frost-200 text-4xl justify-center items-center transition-all hover:scale-105 hover:cursor-pointer m-4">
-            {icon}
-            <div className="w-2" />
+        <div className="flex w-full h-full bg-nord-300 rounded-2xl justify-center items-center transition-all hover:scale-105 hover:cursor-pointer m-4">
+            {icon && (
+                <>
+                    {icon}
+                    <div className="w-2" />
+                </>
+            )}
             {children}
         </div>
     );
@@ -24,35 +28,39 @@ export default function Anime() {
     const router = useRouter();
     const { aid } = router.query;
 
-    const { data } = useRedaxios<JikanAnime>(`https://api.jikan.moe/v3/anime/${aid}`, {}, [aid]);
+    const { data } = useRedaxios<JikanAnime>(`https://api.jikan.moe/v3/anime/${aid}`, {}, [
+        aid,
+    ]);
 
     return (
-        <div className="w-full h-full flex flex-col justify-center items-center overflow-auto">
+        <div className="w-full h-full flex flex-col">
             <span className="w-full h-auto text-frost-300 text-6xl text-center mt-2">
                 {data?.title_english || data?.title || data?.title_japanese}
             </span>
-            <div>
-                <ul className="list-disc">
-                    <li>hi</li>
-                    <li>nah </li>
-                </ul>
-            </div>
-            <div className="flex w-full h-full justify-center items-start p-4 flex-wrap">
-                <Link href={aid + "/stats"} passHref>
-                    <a>
-                        <Card icon={<Chart size={46} />}>Stats</Card>
-                    </a>
-                </Link>
-                <Link href={aid + "/episodes"} passHref>
-                    <a>
-                        <Card icon={<Document size={46} />}>Episodes</Card>
-                    </a>
-                </Link>
-                <Link href={aid + "/pictures"} passHref>
-                    <a>
-                        <Card icon={<Image2 size={46} />}>Pictures</Card>
-                    </a>
-                </Link>
+            <div className="flex w-full h-full justify-around items-center flex-wrap">
+                <div className="flex-1">
+                    <Card>
+                        <div>
+                            <div>Stats</div>
+                            <div>
+                                {JSON.stringify(data, null, 2)}
+                            </div>
+                        </div>
+                    </Card>
+                </div>
+
+                <div className="flex flex-1 justify-center items-start p-4 flex-wrap">
+                    <Link href={aid + "/episodes"} passHref>
+                        <a className="w-60 h-60 m-2 text-2xl font-semibold">
+                            <Card icon={<Document size={46} />}>Episodes</Card>
+                        </a>
+                    </Link>
+                    <Link href={aid + "/pictures"} passHref>
+                        <a className="w-60 h-60 m-2 text-2xl font-semibold">
+                            <Card icon={<Image2 size={46} />}>Pictures</Card>
+                        </a>
+                    </Link>
+                </div>
             </div>
         </div>
     );
