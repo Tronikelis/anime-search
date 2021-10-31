@@ -18,7 +18,13 @@ export default function Episodes() {
                     data.episodes.map((val, i) => (
                         <div key={i} className="w-96 h-auto">
                             <div className="text-frost-200 text-left p-5 rounded-lg bg-nord-300 m-5 transition-all hover:scale-110">
-                                {i + 1} {val.title || val.title_japanese}
+                                <div className="w-full text-lg">Episode {i + 1}</div>
+                                <div className="w-full text-sm">
+                                    {val.title || val.title_japanese}
+                                </div>
+                                <div className="w-full text-right text-black text-xs">
+                                    {val.aired?.split("T")[0]}
+                                </div>
                             </div>
                         </div>
                     ))}
