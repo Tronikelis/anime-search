@@ -11,8 +11,8 @@ export default function Episodes() {
     );
 
     return (
-        <div className="flex w-full h-full flex-nowrap flex-col justify-center items-center">
-            <div className="text-frost-300 font-bold text-4xl mb-6">Episodes:</div>
+        <div className="flex w-full h-full flex-nowrap flex-col">
+            <div className="text-frost-300 font-bold text-4xl my-6 text-center">Episodes:</div>
             <div className="flex flex-wrap justify-center items-center">
                 {data &&
                     data.episodes.map((val, i) => (
