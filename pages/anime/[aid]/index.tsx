@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import type { ReactNode } from "react";
 import { Document, Image2 } from "react-iconly";
 import Link from "next/link";
 import { useRedaxios } from "use-redaxios";
