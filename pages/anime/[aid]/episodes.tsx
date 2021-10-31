@@ -16,7 +16,7 @@ export default function Episodes() {
             <div className="flex flex-wrap justify-center items-center">
                 {data &&
                     data.episodes.map((val, i) => (
-                        <div key={i} className="w-96 h-auto">
+                        <div key={i} className="w-72 md:w-96 h-auto">
                             <div className="text-frost-200 text-left p-5 rounded-lg bg-nord-300 m-5 transition-all hover:scale-110">
                                 <div className="w-full text-xl">Episode {i + 1}</div>
                                 <div className="w-full text-lg">

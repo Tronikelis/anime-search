@@ -16,12 +16,12 @@ export default function Anime() {
     ]);
 
     return (
-        <div className="w-full h-full flex flex-col justify-center items-center">
-            <span className="w-full h-auto text-frost-300 text-6xl text-center my-8">
+        <div className="w-full h-full flex flex-col">
+            <div className="w-full h-auto text-frost-300 text-6xl text-center my-8">
                 {data?.title_english || data?.title || data?.title_japanese}
-            </span>
+            </div>
             <div className="flex w-full h-full justify-center items-start flex-wrap">
-                <div className="w-96 h-auto">
+                <div className="w-72 md:w-96 h-auto">
                     <Card>
                         <div className="w-full h-full flex flex-col p-5">
                             {data?.image_url && (
