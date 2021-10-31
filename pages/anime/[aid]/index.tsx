@@ -17,7 +17,7 @@ export default function Anime() {
 
     return (
         <div className="w-full h-full flex flex-col">
-            <div className="w-full h-auto text-frost-300 text-6xl text-center my-8">
+            <div className="w-full h-auto text-frost-300 text-4xl md:text-6xl text-center my-8">
                 {data?.title_english || data?.title || data?.title_japanese}
             </div>
             <div className="flex w-full h-full justify-center items-start flex-wrap">
