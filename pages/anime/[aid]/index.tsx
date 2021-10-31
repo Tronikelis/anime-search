@@ -31,6 +31,12 @@ export default function Anime() {
             <span className="w-full h-auto text-frost-300 text-6xl text-center mt-2">
                 {data?.title_english || data?.title || data?.title_japanese}
             </span>
+            <div>
+                <ul className="list-disc">
+                    <li>hi</li>
+                    <li>nah </li>
+                </ul>
+            </div>
             <div className="flex w-full h-full justify-center items-start p-4 flex-wrap">
                 <Link href={aid + "/stats"} passHref>
                     <a>
