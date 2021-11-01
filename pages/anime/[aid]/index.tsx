@@ -1,9 +1,10 @@
 import { useRouter } from "next/router";
-import { Document, Image2 } from "react-iconly";
+import { Document, Image2, MoreSquare } from "react-iconly";
 import Link from "next/link";
 import { useRedaxios } from "use-redaxios";
 import { JikanAnime } from "../../../types";
 import Image from "next/image";
+import { API_URL } from "../../../constants";
 
 import { Card } from "../../../components";
 
@@ -11,9 +12,7 @@ export default function Anime() {
     const router = useRouter();
     const { aid } = router.query;
 
-    const { data } = useRedaxios<JikanAnime>(`https://api.jikan.moe/v3/anime/${aid}`, {}, [
-        aid,
-    ]);
+    const { data } = useRedaxios<JikanAnime>(`${API_URL}/v3/anime/${aid}`, {}, [aid]);
 
     return (
         <div className="w-full h-full flex flex-col">
@@ -64,6 +63,13 @@ export default function Anime() {
                     <Link href={aid + "/pictures"} passHref>
                         <a className="w-60 h-60 m-2 text-2xl font-semibold text-frost-300">
                             <Card icon={<Image2 size={46} />}>Pictures</Card>
+                        </a>
+                    </Link>
+                    <Link href={aid + "/misc"} passHref>
+                        <a className="w-60 h-60 m-2 text-2xl font-semibold text-frost-300">
+                            <Card icon={<MoreSquare size={46} />}>
+                                Misc
+                            </Card>
                         </a>
                     </Link>
                 </div>

@@ -1,17 +1,18 @@
-import { JikanQuery } from "../types";
-import { useStore } from "../store";
-import { AnimeCard, SearchInput } from "../components";
 import { useDebounce } from "use-debounce";
 import { useRedaxios } from "use-redaxios";
-
 import Spinner from "react-spinners/ScaleLoader";
+import { API_URL } from "../constants";
+import { JikanQuery } from "../types";
+
+import { useStore } from "../store";
+import { AnimeCard, SearchInput } from "../components";
 
 export default function Search() {
     const query = useStore(store => store.state.query);
     const [debouncedQuery] = useDebounce(query, 300);
 
     const { data, fetching } = useRedaxios<JikanQuery>(
-        "https://api.jikan.moe/v3/search/anime?q=" + encodeURIComponent(debouncedQuery),
+        `${API_URL}/v3/search/anime?q=` + encodeURIComponent(debouncedQuery),
         {},
         // don't call the request if it's empty
         debouncedQuery ? [debouncedQuery] : undefined

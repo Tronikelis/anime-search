@@ -2,12 +2,13 @@ import { useRedaxios } from "use-redaxios";
 import { JikanTop } from "../types";
 import Image from "next/image";
 import Link from "next/link";
+import { API_URL } from "../constants";
 
 import { Card } from "../components";
 
 export default function Trending() {
     const { data } = useRedaxios<JikanTop>(
-        "https://api.jikan.moe/v3/top/anime/1/airing",
+        `${API_URL}/v3/top/anime/1/airing`,
         {},
         []
     );

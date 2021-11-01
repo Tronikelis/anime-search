@@ -2,11 +2,12 @@ import { useRedaxios } from "use-redaxios";
 import { useRouter } from "next/router";
 import { JikanPictures } from "../../../types";
 import Image from "next/image";
+import { API_URL } from "../../../constants";
 
 export default function Pictures() {
     const { aid } = useRouter().query;
     const { data } = useRedaxios<JikanPictures>(
-        `https://api.jikan.moe/v3/anime/${aid}/pictures`,
+        `${API_URL}/v3/anime/${aid}/pictures`,
         {},
         [aid]
     );

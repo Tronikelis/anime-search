@@ -1,11 +1,12 @@
 import { useRedaxios } from "use-redaxios";
 import { useRouter } from "next/router";
 import { JikanEpisodes } from "../../../types";
+import { API_URL } from "../../../constants";
 
 export default function Episodes() {
     const { aid } = useRouter().query;
     const { data } = useRedaxios<JikanEpisodes>(
-        `https://api.jikan.moe/v3/anime/${aid}/episodes`,
+        `${API_URL}/v3/anime/${aid}/episodes`,
         {},
         [aid]
     );
