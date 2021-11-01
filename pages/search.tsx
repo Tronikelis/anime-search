@@ -36,7 +36,7 @@ export default function Search() {
                                 name={val.title}
                                 rated={String(val.rated)}
                                 score={val.score}
-                                id={val.mal_id.toString()}
+                                id={val.mal_id}
                             />
                         </div>
                     ))}

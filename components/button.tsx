@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 interface ButtonProps {
     onClick?: () => void;
     icon?: ReactNode;
-    children: any;
+    children?: any;
 }
 
 export default function Button(props: ButtonProps) {
@@ -15,8 +15,12 @@ export default function Button(props: ButtonProps) {
         >
             <div className="flex w-full h-full justify-evenly items-center">
                 {icon}
-                <div className="w-1" />
-                {children}
+                {children && (
+                    <>
+                        <div className="w-1" />
+                        {children}
+                    </>
+                )}
             </div>
         </button>
     );

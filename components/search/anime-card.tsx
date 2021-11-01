@@ -10,7 +10,7 @@ interface AnimeCardProps {
     score: number;
     rated: string;
     imgUrl: string;
-    id: string;
+    id: number;
 }
 
 function AnimeCard(props: AnimeCardProps) {

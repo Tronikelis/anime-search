@@ -18,7 +18,7 @@ export default function Trending() {
             <div className="text-center my-4 text-frost-200 text-6xl">Trending</div>
             <div className="w-full h-full flex justify-center items-center flex-wrap">
                 {data?.top.map((val, i) => (
-                    <Link href={`/anime/${val.mal_id}`} passHref key={i}>
+                    <Link href={`/anime/${val.mal_id}`} key={i}>
                         <a className="w-64 md:w-80 h-auto m-4 hover:cursor-pointer">
                             <Card>
                                 <div className="w-full h-full flex flex-col">

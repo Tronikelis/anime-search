@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Heart2, Search } from "react-iconly";
+import { Heart2, Search, Home } from "react-iconly";
 import Button from "./button";
 
 export default function NavBar() {
@@ -8,6 +8,12 @@ export default function NavBar() {
             <Link href="/trending">
                 <a>
                     <Button icon={<Heart2 />}>Trending</Button>
+                </a>
+            </Link>
+
+            <Link href="/">
+                <a>
+                    <Button icon={<Home />}></Button>
                 </a>
             </Link>
 

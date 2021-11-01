@@ -55,17 +55,17 @@ export default function Anime() {
                 </div>
 
                 <div className="flex justify-center items-center p-4 flex-wrap">
-                    <Link href={aid + "/episodes"} passHref>
+                    <Link href={aid + "/episodes"}>
                         <a className="w-60 h-60 m-2 text-2xl font-semibold text-frost-300">
                             <Card icon={<Document size={46} />}>Episodes</Card>
                         </a>
                     </Link>
-                    <Link href={aid + "/pictures"} passHref>
+                    <Link href={aid + "/pictures"}>
                         <a className="w-60 h-60 m-2 text-2xl font-semibold text-frost-300">
                             <Card icon={<Image2 size={46} />}>Pictures</Card>
                         </a>
                     </Link>
-                    <Link href={aid + "/misc"} passHref>
+                    <Link href={aid + "/misc"}>
                         <a className="w-60 h-60 m-2 text-2xl font-semibold text-frost-300">
                             <Card icon={<MoreSquare size={46} />}>
                                 Misc
