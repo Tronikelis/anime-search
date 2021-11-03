@@ -1,12 +1,12 @@
 import { useRouter } from "next/router";
-import { Document, Image2, MoreSquare } from "react-iconly";
+import { Document, Image2, MoreSquare, ChevronRight, ChevronLeft } from "react-iconly";
 import Link from "next/link";
 import { useRedaxios } from "use-redaxios";
 import { JikanAnime } from "../../../types";
 import Image from "next/image";
 import { API_URL } from "../../../constants";
 
-import { Card } from "../../../components";
+import { Card, Button } from "../../../components";
 
 export default function Anime() {
     const router = useRouter();
@@ -50,6 +50,32 @@ export default function Anime() {
                                 <span className="font-bold">Status: </span>
                                 {data?.status}
                             </div>
+                            <div className="mt-4 flex w-full justify-between items-center">
+                                {data?.related.Prequel && (
+                                    <Link href={`${data.related.Prequel[0].mal_id}`}>
+                                        <a>
+                                            <Button
+                                                className="bg-nord-500 hover:bg-nord-600"
+                                                iconStart={<ChevronLeft size={22} />}
+                                            >
+                                                Prequel
+                                            </Button>
+                                        </a>
+                                    </Link>
+                                )}
+                                {data?.related.Sequel && (
+                                    <Link href={`${data.related.Sequel[0].mal_id}`} passHref>
+                                        <a>
+                                            <Button
+                                                className="bg-nord-500 hover:bg-nord-600"
+                                                iconEnd={<ChevronRight size={22} />}
+                                            >
+                                                Sequel
+                                            </Button>
+                                        </a>
+                                    </Link>
+                                )}
+                            </div>
                         </div>
                     </Card>
                 </div>
@@ -67,9 +93,7 @@ export default function Anime() {
                     </Link>
                     <Link href={aid + "/misc"}>
                         <a className="w-60 h-60 m-2 text-2xl font-semibold text-frost-300">
-                            <Card icon={<MoreSquare size={46} />}>
-                                Misc
-                            </Card>
+                            <Card icon={<MoreSquare size={46} />}>Misc</Card>
                         </a>
                     </Link>
                 </div>

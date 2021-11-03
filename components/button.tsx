@@ -1,26 +1,32 @@
-import type { ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 
 interface ButtonProps {
     onClick?: () => void;
-    icon?: ReactNode;
+    iconEnd?: ReactNode;
+    iconStart?: ReactNode
     children?: any;
+    className?: HTMLAttributes<HTMLButtonElement>["className"];
 }
 
 export default function Button(props: ButtonProps) {
-    const { children, icon, onClick } = props;
+    const { children, iconEnd, iconStart, onClick, className } = props;
     return (
         <button
             onClick={onClick}
-            className="bg-nord-300 hover:bg-nord-400 rounded-lg shadow-lg font-semibold text-white p-2 transition-all hover:scale-105"
+            className={
+                "bg-nord-300 hover:bg-nord-400 rounded-lg shadow-lg font-semibold text-white p-2 transition-all hover:scale-105 " +
+                className
+            }
         >
             <div className="flex w-full h-full justify-evenly items-center">
-                {icon}
+                {iconStart}
                 {children && (
                     <>
                         <div className="w-1" />
                         {children}
                     </>
                 )}
+                {iconEnd}
             </div>
         </button>
     );
