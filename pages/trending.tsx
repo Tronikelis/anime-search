@@ -1,4 +1,5 @@
-import { useRedaxios } from "use-redaxios";
+import { GetServerSideProps } from "next";
+import redaxios from "redaxios";
 import { JikanTop } from "../types";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,13 +7,15 @@ import { API_URL } from "../constants";
 
 import { Card } from "../components";
 
-export default function Trending() {
-    const { data } = useRedaxios<JikanTop>(
-        `${API_URL}/v3/top/anime/1/airing`,
-        {},
-        []
-    );
+export const getServerSideProps: GetServerSideProps = async () => {
+    const { data } = await redaxios.get<JikanTop>(`${API_URL}/v3/top/anime/1/airing`);
 
+    return {
+        props: { data },
+    };
+};
+
+export default function Trending({ data }: { data?: JikanTop }) {
     return (
         <>
             <div className="text-center my-4 text-frost-200 text-6xl">Trending</div>
