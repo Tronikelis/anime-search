@@ -1,17 +1,16 @@
-import { useRedaxios } from "use-redaxios";
-import { useRouter } from "next/router";
+import { GetServerSideProps } from "next";
+import redaxios from "redaxios";
 import { JikanPictures } from "../../../types";
 import Image from "next/image";
 import { API_URL } from "../../../constants";
 
-export default function Pictures() {
-    const { aid } = useRouter().query;
-    const { data } = useRedaxios<JikanPictures>(
-        `${API_URL}/v3/anime/${aid}/pictures`,
-        {},
-        [aid]
-    );
+export const getServerSideProps: GetServerSideProps = async ({ params = {} }) => {
+    const { aid } = params;
+    const { data } = await redaxios.get<JikanPictures>(`${API_URL}/v3/anime/${aid}/pictures`);
+    return { props: { data } };
+};
 
+export default function Pictures({ data }: {data?: JikanPictures}) {
     return (
         <div className="w-full h-full flex flex-wrap justify-center items-center">
             {data &&

@@ -9,10 +9,7 @@ import { Card } from "../components";
 
 export const getServerSideProps: GetServerSideProps = async () => {
     const { data } = await redaxios.get<JikanTop>(`${API_URL}/v3/top/anime/1/airing`);
-
-    return {
-        props: { data },
-    };
+    return { props: { data } };
 };
 
 export default function Trending({ data }: { data?: JikanTop }) {

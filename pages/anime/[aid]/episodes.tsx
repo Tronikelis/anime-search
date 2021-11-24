@@ -1,16 +1,15 @@
-import { useRedaxios } from "use-redaxios";
-import { useRouter } from "next/router";
+import redaxios from "redaxios";
+import { GetServerSideProps } from "next";
 import { JikanEpisodes } from "../../../types";
 import { API_URL } from "../../../constants";
 
-export default function Episodes() {
-    const { aid } = useRouter().query;
-    const { data } = useRedaxios<JikanEpisodes>(
-        `${API_URL}/v3/anime/${aid}/episodes`,
-        {},
-        [aid]
-    );
+export const getServerSideProps: GetServerSideProps = async ({ params = {} }) => {
+    const { aid } = params;
+    const { data } = await redaxios.get<JikanEpisodes>(`${API_URL}/v3/anime/${aid}/episodes`);
+    return { props: { data } };
+};
 
+export default function Episodes({ data }: { data?: JikanEpisodes }) {
     return (
         <div className="flex w-full h-full flex-nowrap flex-col">
             <div className="text-frost-300 font-bold text-4xl my-6 text-center">Episodes:</div>

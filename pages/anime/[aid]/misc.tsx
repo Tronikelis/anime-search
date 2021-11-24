@@ -1,16 +1,17 @@
-import { useRedaxios } from "use-redaxios";
+import { GetServerSideProps } from "next";
 import { API_URL } from "../../../constants";
 import { JikanAnime } from "../../../types";
-import { useRouter } from "next/router";
+import redaxios from "redaxios";
 
 import { Card } from "../../../components";
 
-export default function Misc() {
-    const router = useRouter();
-    const { aid } = router.query;
+export const getServerSideProps: GetServerSideProps = async ({ params = {} }) => {
+    const { aid } = params;
+    const { data } = await redaxios.get<JikanAnime>(`${API_URL}/v3/anime/${aid}`);
+    return { props: { data } };
+};
 
-    const { data } = useRedaxios<JikanAnime>(`${API_URL}/v3/anime/${aid}`, {}, [aid]);
-
+export default function Misc({ data }: { data: JikanAnime }) {
     return (
         <div className="w-full h-auto py-10 px-5 md:px-60 md:text-xl">
             <Card className="w-full h-full flex flex-col">

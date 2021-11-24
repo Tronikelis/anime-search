@@ -1,18 +1,23 @@
 import { useRouter } from "next/router";
+import { GetServerSideProps } from "next";
+import redaxios from "redaxios";
 import { Document, Image2, MoreSquare, ChevronRight, ChevronLeft } from "react-iconly";
 import Link from "next/link";
-import { useRedaxios } from "use-redaxios";
 import { JikanAnime } from "../../../types";
 import Image from "next/image";
 import { API_URL } from "../../../constants";
 
 import { Card, Button } from "../../../components";
 
-export default function Anime() {
+export const getServerSideProps: GetServerSideProps = async ({ params = {} }) => {
+    const { aid } = params;
+    const { data } = await redaxios.get<JikanAnime>(`${API_URL}/v3/anime/${aid}`);
+    return { props: { data } };
+};
+
+export default function Anime({ data }: { data?: JikanAnime }) {
     const router = useRouter();
     const { aid } = router.query;
-
-    const { data } = useRedaxios<JikanAnime>(`${API_URL}/v3/anime/${aid}`, {}, [aid]);
 
     return (
         <div className="w-full h-full flex flex-col">
@@ -81,17 +86,17 @@ export default function Anime() {
                 </div>
 
                 <div className="flex justify-center items-center p-4 flex-wrap">
-                    <Link href={aid + "/episodes"}>
+                    <Link href={aid + "/episodes"} passHref>
                         <a className="w-60 h-60 m-2 text-2xl font-semibold text-frost-300">
                             <Card icon={<Document size={46} />}>Episodes</Card>
                         </a>
                     </Link>
-                    <Link href={aid + "/pictures"}>
+                    <Link href={aid + "/pictures"} passHref>
                         <a className="w-60 h-60 m-2 text-2xl font-semibold text-frost-300">
                             <Card icon={<Image2 size={46} />}>Pictures</Card>
                         </a>
                     </Link>
-                    <Link href={aid + "/misc"}>
+                    <Link href={aid + "/misc"} passHref>
                         <a className="w-60 h-60 m-2 text-2xl font-semibold text-frost-300">
                             <Card icon={<MoreSquare size={46} />}>Misc</Card>
                         </a>
