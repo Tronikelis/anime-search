@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { GetServerSideProps } from "next";
 import { API_URL } from "../../../constants";
 import { JikanAnime } from "../../../types";
@@ -14,6 +15,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params = {} }) =>
 export default function Misc({ data }: { data: JikanAnime }) {
     return (
         <div className="w-full h-auto py-10 px-5 md:px-60 md:text-xl">
+            <Head>
+                <title>Misc</title>
+            </Head>
             <Card className="w-full h-full flex flex-col">
                 <div className="text-center text-frost-200 text-2xl md:text-4xl font-semibold">
                     {data?.title_english || data?.title || data?.title_japanese}

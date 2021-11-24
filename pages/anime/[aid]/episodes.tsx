@@ -1,3 +1,4 @@
+import Head from "next/head";
 import redaxios from "redaxios";
 import { GetServerSideProps } from "next";
 import { JikanEpisodes } from "../../../types";
@@ -12,6 +13,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params = {} }) =>
 export default function Episodes({ data }: { data?: JikanEpisodes }) {
     return (
         <div className="flex w-full h-full flex-nowrap flex-col">
+            <Head>
+                <title>Episodes</title>
+            </Head>
             <div className="text-frost-300 font-bold text-4xl my-6 text-center">Episodes:</div>
             <div className="flex flex-wrap justify-center items-center">
                 {data &&

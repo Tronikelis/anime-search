@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
 import redaxios from "redaxios";
@@ -21,6 +22,9 @@ export default function Anime({ data }: { data?: JikanAnime }) {
 
     return (
         <div className="w-full h-full flex flex-col">
+            <Head>
+                <title>{data?.title_english || data?.title || data?.title_japanese}</title>
+            </Head>
             <div className="w-full h-auto text-frost-300 text-4xl md:text-6xl text-center my-8">
                 {data?.title_english || data?.title || data?.title_japanese}
             </div>

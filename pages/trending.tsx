@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { GetServerSideProps } from "next";
 import redaxios from "redaxios";
 import { JikanTop } from "../types";
@@ -15,6 +16,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
 export default function Trending({ data }: { data?: JikanTop }) {
     return (
         <>
+            <Head>
+                <title>Trending</title>
+            </Head>
             <div className="text-center my-4 text-frost-200 text-6xl">Trending</div>
             <div className="w-full h-full flex justify-center items-center flex-wrap">
                 {data?.top.map((val, i) => (

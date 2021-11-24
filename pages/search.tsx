@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useDebounce } from "use-debounce";
 import { useRedaxios } from "use-redaxios";
 import Spinner from "react-spinners/ScaleLoader";
@@ -20,6 +21,9 @@ export default function Search() {
 
     return (
         <>
+            <Head>
+                <title>Search</title>
+            </Head>
             <div className="w-full mt-1 flex justify-center items-center">
                 <div className="w-72 md:w-96">
                     <SearchInput />

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { GetServerSideProps } from "next";
 import redaxios from "redaxios";
 import { JikanPictures } from "../../../types";
@@ -13,6 +14,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params = {} }) =>
 export default function Pictures({ data }: {data?: JikanPictures}) {
     return (
         <div className="w-full h-full flex flex-wrap justify-center items-center">
+            <Head>
+                <title>Pictures</title>
+            </Head>
             {data &&
                 data.pictures.map((val, i) => (
                     <div
